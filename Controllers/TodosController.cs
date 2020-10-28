@@ -27,7 +27,12 @@ namespace Todoist.Controllers
         public ActionResult<Todo> GetTodo(int id)
         {
             var task = _repository.GetTodo(id);
-            return Ok(task);
+            if (task != null)
+            {
+                return Ok(task);
+            }
+
+            return NotFound();
         }
     }
 }
